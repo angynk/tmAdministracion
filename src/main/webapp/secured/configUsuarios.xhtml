@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:body>
+
+    <ui:composition template="/template/common/commonLayout.xhtml">
+        <ui:define name="content">
+
+
+
+            <h:form  id="form">
+                <p:growl id="message" showDetail="true" />
+                <p:panel id="basic" header="Resumen de Indicadores Gerenciales GoalBus"  style="margin-bottom:20px">
+
+
+                    <div style="height: 10px"></div>
+                    <!--<p:panel visible="#{RIBean.visibleResumen}">-->
+                        <!--<div style="margin-top:10px"/>-->
+                        <!--<div style="margin-top:10px"/>-->
+
+                        <!--<p:dataTable id="prog" var="prog" value="#{RIBean.programacionRecords}" widgetVar="ProgTable"-->
+                                     <!--emptyMessage="No hay registros relacionados a la busqueda"-->
+                                     <!--scrollable="true" scrollWidth="98%" scrollHeight="410"-->
+                                     <!--filteredValue="#{RIBean.filteredProgramacionRecords}"-->
+                                     <!--editable="true">-->
+
+                            <!--<p:column filterBy="#{prog.fechaFormatted}" headerText="Fecha"  filterMatchMode="contains" sortBy="#{prog.fecha}"-->
+                                      <!--style="width: 70px">-->
+                                <!--<h:outputText value="#{prog.fechaFormatted}" style="width: 75px" />-->
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.cuadro}" headerText="Cuadro"  filterMatchMode="contains" sortBy="#{prog.cuadro}"-->
+                                      <!--style="width: 70px">-->
+                                <!--<h:outputText value="#{prog.cuadro}" style="width: 75px" />-->
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.buses}" headerText="Buses"  filterMatchMode="contains" sortBy="#{prog.buses}"-->
+                                      <!--style="width: 70px">-->
+                                <!--<h:outputText value="#{prog.buses}"  style="width: 75px"/>-->
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.kmComercialFin}" headerText="KM Comercial"  filterMatchMode="contains" sortBy="#{prog.kmComercialFin}"-->
+                                      <!--style="width: 120px">-->
+                                <!--<h:outputText value="#{prog.kmComercialFin}" />-->
+
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.expedicionComercial}" headerText="Exp Comercial"  filterMatchMode="contains" sortBy="#{prog.expedicionComercial}"-->
+                                      <!--style="width: 120px">-->
+                                <!--<h:outputText value="#{prog.expedicionComercial}" />-->
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.kmVacioFin}" headerText="KM Vacio"  filterMatchMode="contains" sortBy="#{prog.kmVacioFin}"-->
+                                      <!--style="width: 120px">-->
+                                <!--<h:outputText value="#{prog.kmVacioFin}" />-->
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.porcentajeVacioFinal}" headerText="% Vacio"  filterMatchMode="contains" sortBy="#{prog.porcentajeVacioFinal}"-->
+                                      <!--style="width:80px">-->
+                                <!--<h:outputText value="#{prog.porcentajeVacioFinal}" style="width: 90px"/>-->
+                            <!--</p:column>-->
+
+                            <!--<p:column filterBy="#{prog.lineasCargadas}" headerText="Líneas"  filterMatchMode="contains" sortBy="#{prog.lineasCargadas}"-->
+                                      <!--style="width:80px">-->
+                                <!--<h:outputText value="#{prog.lineasCargadas}" style="width: 90px"/>-->
+                            <!--</p:column>-->
+
+                        <!--</p:dataTable>-->
+                    <!--</p:panel>-->
+
+
+
+
+                <!--</p:panel>-->
+            </h:form>
+
+        </ui:define>
+
+
+    </ui:composition>
+
+</h:body>
+
+</html>
