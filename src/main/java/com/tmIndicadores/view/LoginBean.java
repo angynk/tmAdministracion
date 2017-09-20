@@ -58,13 +58,14 @@ public class LoginBean implements Serializable {
         boolean result = false;
         Usuario usuario = usuarioServicios.encontrarUsuarioByNombreUsuario(uname);
         if (usuario != null) {
-            if (usuario.getContrasena().equals(password)) {
-                HttpSession session = Util.getSession();
-                session.setAttribute("user", uname);
-                session.setAttribute("role", usuario.getRole());
-                this.role ="ADMIN";
-                this.nombreUsuario = usuario.getNombre();
-                return navigationBean.redirectToWelcome();
+            if (usuario.getContrasena().equals(password) && usuario.getRole().isPermisoEliminar()
+                    && usuario.getRole().isPermisoEscribir() && usuario.getRole().isPermisoLeer()) {
+                    HttpSession session = Util.getSession();
+                    session.setAttribute("user", uname);
+                    session.setAttribute("role", usuario.getRole());
+                    this.role ="ADMIN";
+                    this.nombreUsuario = usuario.getNombre();
+                    return navigationBean.redirectToWelcome();
             } else {
                 FacesContext.getCurrentInstance().addMessage(
                         null,
