@@ -20,6 +20,16 @@ public class MenuBean {
         }
     }
 
+    public void refreshBVistaRoles(){
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            ec.redirect(ec.getRequestContextPath()
+                    + "/secured/configRoles.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

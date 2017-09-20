@@ -9,10 +9,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
 
 @ManagedBean(name = "configUser")
-@SessionScoped
+@ViewScoped
 public class ConfigUsuariosView {
 
     private List<Usuario> usuariosRecords;

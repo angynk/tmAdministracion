@@ -16,6 +16,9 @@ public class Messages {
     public static final String DESACTIVACION = "Usuario Desactivado";
     public static final String ACTUALIZACION_USUARIO = "Usuario Actualizado";
     public static final String CREACION_USUARIO = "Usuario Creado";
+    public static final String ACTUALIZACION_ROLE = "Rol Actualizado";
+    public static final String CREACION_ROLE = "Rol Creado";
+
     public static final String MENSAJE_FALLIDA = "Carga Fallida";
     public static final String ACCION_INDICADORES_ALMACENADOS = "Indicadores GoalBus Almacenados";
     public static final String ACCION_INDICADORES_REVISAR = "Verificar los campos y la existencia de la programación";

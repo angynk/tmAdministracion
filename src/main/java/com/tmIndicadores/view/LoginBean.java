@@ -9,8 +9,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.Serializable;
 
 @ManagedBean(name = "loginBean")
@@ -19,8 +21,10 @@ public class LoginBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String uname;
+    private String nombreUsuario;
     private String password;
     private String role;
+    private String logout;
 
 
     @ManagedProperty(value="#{navigationBean}")
@@ -59,7 +63,7 @@ public class LoginBean implements Serializable {
                 session.setAttribute("user", uname);
                 session.setAttribute("role", usuario.getRole());
                 this.role ="ADMIN";
-
+                this.nombreUsuario = usuario.getNombre();
                 return navigationBean.redirectToWelcome();
             } else {
                 FacesContext.getCurrentInstance().addMessage(
@@ -83,7 +87,22 @@ public class LoginBean implements Serializable {
     public String logout() {
         HttpSession session = Util.getSession();
         session.invalidate();
+//        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+//        try {
+//            ec.redirect(ec.getRequestContextPath()
+//                    + "/index.xhtml");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         return navigationBean.toLogin();
+    }
+
+    public String getLogout() {
+        return logout;
+    }
+
+    public void setLogout(String logout) {
+        this.logout = logout;
     }
 
     public NavigationBean getNavigationBean() {
@@ -112,5 +131,13 @@ public class LoginBean implements Serializable {
 
     public boolean hasRole(String role) {
         return this.role.equals(role);
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 }

@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      >
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
     <body>
 	    <ui:composition>
             <!--<div id="wrapper">-->
@@ -28,17 +28,16 @@
                 <p:panel style="border:none;padding-top: 5px;">
 
 
-                <p:megaMenu orientation="horizontal" style="margin-top:30px;">
+                <p:menubar orientation="horizontal" style="margin-top:30px;">
                     <p:submenu label="Gestion Usuarios" icon="ui-icon-script">
-                        <p:column>
-                            <p:submenu label="Visualizacion">
                                 <p:menuitem value="Usuarios" action="#{menu.refreshBVistaUsuarios}" />
-                                <p:menuitem value="Roles" action="#{menu.refreshBVistaUsuarios}" />
-                            </p:submenu>
-                        </p:column>
+                                <p:menuitem value="Roles" action="#{menu.refreshBVistaRoles}" />
                     </p:submenu>
-
-                </p:megaMenu>
+                    <f:facet name="options">
+                        <!--<p:outputLabel style="margin-right:10px" value="#{loginBean.nombreUsuario}"/>-->
+                        <!--<p:commandButton type="button" value="Salir" icon="ui-icon-extlink" actionListener="#{loginBean.logout}" />-->
+                    </f:facet>
+                </p:menubar>
                 </p:panel>
 
             </h:form>
