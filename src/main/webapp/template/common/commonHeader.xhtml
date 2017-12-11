@@ -35,6 +35,10 @@
                                 <p:menuitem value="Usuarios" action="#{menu.refreshBVistaUsuarios}" />
                                 <p:menuitem value="Roles" action="#{menu.refreshBVistaRoles}" />
                     </p:submenu>
+
+                    <p:submenu label="Gestion Tareas" icon="ui-icon-script">
+                        <p:menuitem value="Listado Tareas" action="#{menu.refreshListadoTareas}" />
+                    </p:submenu>
                     <f:facet name="options">
                         <!--<p:outputLabel style="margin-right:10px" value="#{loginBean.nombreUsuario}"/>-->
                         <!--<p:commandButton type="button" value="Salir" icon="ui-icon-extlink" actionListener="#{loginBean.logout}" />-->

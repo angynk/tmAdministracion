@@ -53,4 +53,9 @@ public class UsuarioDao {
         return (Usuario) criteria.uniqueResult();
     }
 
+    public Usuario getUsuarioById(long idNuevo) {
+        Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(Usuario.class);
+        criteria.add(Restrictions.eq("id", idNuevo));
+        return (Usuario) criteria.uniqueResult();
+    }
 }

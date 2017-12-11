@@ -15,7 +15,9 @@ public class Messages {
     public static final String MENSAJE_EXITOSA = "Proceso Exitoso";
     public static final String DESACTIVACION = "Usuario Desactivado";
     public static final String ACTUALIZACION_USUARIO = "Usuario Actualizado";
+    public static final String ACTUALIZACION_TAREA = "Tarea Actualizada";
     public static final String CREACION_USUARIO = "Usuario Creado";
+    public static final String CREACION_TAREA = "Tarea Creada";
     public static final String ACTUALIZACION_ROLE = "Rol Actualizado";
     public static final String CREACION_ROLE = "Rol Creado";
 

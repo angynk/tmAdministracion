@@ -1,6 +1,8 @@
 package com.tmIndicadores.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="usuario")
@@ -25,11 +27,21 @@ public class Usuario {
     @Column(name = "contrasena")
     private String contrasena;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "activo")
     private boolean activo;
 
     @Column(name = "area")
     private String area;
+
+
+    @Transient
+    private long idNuevo;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    private Set<Tarea> tareaRecords= new HashSet<Tarea>(0);
 
     public Usuario() {
     }
@@ -88,5 +100,29 @@ public class Usuario {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public long getIdNuevo() {
+        return idNuevo;
+    }
+
+    public void setIdNuevo(long idNuevo) {
+        this.idNuevo = idNuevo;
+    }
+
+    public Set<Tarea> getTareaRecords() {
+        return tareaRecords;
+    }
+
+    public void setTareaRecords(Set<Tarea> tareaRecords) {
+        this.tareaRecords = tareaRecords;
     }
 }

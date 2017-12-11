@@ -30,6 +30,16 @@ public class MenuBean {
         }
     }
 
+    public void refreshListadoTareas(){
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            ec.redirect(ec.getRequestContextPath()
+                    + "/secured/configTareas.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 
