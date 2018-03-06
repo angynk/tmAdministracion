@@ -1,5 +1,6 @@
 package com.tmIndicadores.view;
 
+import com.tmIndicadores.controller.Util;
 import com.tmIndicadores.controller.servicios.ConfiguracionServicio;
 import com.tmIndicadores.controller.servicios.UsuarioServicios;
 import com.tmIndicadores.model.entity.Role;
@@ -67,6 +68,7 @@ public class ConfigUsuariosView {
             if(nuevoRol!=null){
                 usuarioNuevo.setRole(nuevoRol);
                 usuarioNuevo.setActivo(true);
+                usuarioNuevo.setContrasena(Util.md5(usuarioNuevo.getContrasena()));
                 configuracionServicio.addUsuario(usuarioNuevo);
                 messagesView.info(Messages.MENSAJE_EXITOSA,Messages.CREACION_USUARIO);
                 usuariosRecords = configuracionServicio.getUsuarioAll();
