@@ -92,4 +92,10 @@ public class ConfiguracionServicio {
         modulos.add("Tabla Maestra SIRCI");
         return modulos;
     }
+
+    public boolean usuarioNoExiste(String usuario) {
+        Usuario usuario1 = usuarioDao.encontrarUsuarioByNombreUsuario(usuario);
+        if(usuario1==null) return true;
+        return false;
+    }
 }
