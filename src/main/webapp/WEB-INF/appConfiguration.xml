@@ -37,6 +37,7 @@
                 <value>com.tmIndicadores.model.entity.Usuario</value>
                 <value>com.tmIndicadores.model.entity.Role</value>
                 <value>com.tmIndicadores.model.entity.Tarea</value>
+                <value>com.tmIndicadores.model.entity.Aplicacion</value>
 
             </list>
         </property>

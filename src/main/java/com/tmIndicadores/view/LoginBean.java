@@ -88,13 +88,6 @@ public class LoginBean implements Serializable {
     public String logout() {
         HttpSession session = Util.getSession();
         session.invalidate();
-//        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//        try {
-//            ec.redirect(ec.getRequestContextPath()
-//                    + "/index.xhtml");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         return navigationBean.toLogin();
     }
 

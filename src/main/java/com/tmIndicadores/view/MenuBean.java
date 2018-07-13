@@ -40,6 +40,16 @@ public class MenuBean {
         }
     }
 
+    public void refreshAplicaciones(){
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        try {
+            ec.redirect(ec.getRequestContextPath()
+                    + "/secured/configAplicaciones.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 
