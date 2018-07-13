@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Repository
 @Transactional
 public class RolAplicacionDao {
@@ -31,5 +34,25 @@ public class RolAplicacionDao {
         criteria.add(Restrictions.eq("aplicacion", aplicacion));
         criteria.add(Restrictions.eq("usuario", usuario));
         return (RolAplicacion) criteria.uniqueResult();
+    }
+
+    public void addRolAplicacion(RolAplicacion rolAplicacion) {
+        Serializable save = getSessionFactory().getCurrentSession().save(rolAplicacion);
+
+    }
+
+    public void deleteRolAplicacion(RolAplicacion rolAplicacion) {
+        getSessionFactory().getCurrentSession().delete(rolAplicacion);
+    }
+
+
+    public void updateRolAplicacion(RolAplicacion rolAplicacion ) {
+        getSessionFactory().getCurrentSession().update(rolAplicacion);
+    }
+
+    public List<RolAplicacion> getRolAplicacionUsuario(Usuario usuarioSelected) {
+        Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(RolAplicacion.class);
+        criteria.add(Restrictions.eq("usuario", usuarioSelected));
+        return criteria.list();
     }
 }

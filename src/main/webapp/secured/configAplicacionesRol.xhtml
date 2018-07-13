@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:body>
+
+    <ui:composition template="/template/common/commonLayout.xhtml">
+        <ui:define name="content">
+
+
+
+            <h:form  id="form">
+                <p:growl id="message" showDetail="true" />
+                <p:panel id="basic" header="Aplicaciones del Sistema"  style="margin-bottom:20px">
+
+                    <div style="height: 5px"></div>
+                    <p:panel>
+                        <div style="margin-top:10px"/>
+                        <div style="margin-top:10px"/>
+                        <p:commandButton actionListener="#{configAppRol.crearNuevoRol}" update=":form:nuevaTarea" value="Asociar App"
+                                         oncomplete="PF('nuevaTarea').show()" icon="ui-icon-plus" title="View">
+                        </p:commandButton>
+                        <div style="height: 8px"></div>
+                        <p:dataTable id="prog" var="rol" value="#{configAppRol.rolAplicacionLista}" widgetVar="ProgTable"
+                                     emptyMessage="No hay registros relacionados a la busqueda"
+                                     scrollable="true" scrollWidth="98%" scrollHeight="410"
+                                     editable="true">
+
+                            <p:column filterBy="#{rol.aplicacion.nombre}" headerText="Aplicación"  filterMatchMode="contains" sortBy="#{rol.aplicacion.nombre}"
+                                      style="width: 70px">
+                                <h:outputText value="#{rol.aplicacion.nombre}" style="width: 75px" />
+                            </p:column>
+
+                            <p:column filterBy="#{rol.role.nombre}" headerText="Rol"  filterMatchMode="contains" sortBy="#{rol.role.nombre}"
+                                      style="width: 70px">
+                                <h:outputText value="#{rol.role.nombre}"/>
+                            </p:column>
+
+                            <p:column style="width:32px;text-align: center" exportable="false" >
+                                <p:commandButton update=":form:editarTarea" oncomplete="PF('editarTarea').show()" icon="ui-icon-pencil" title="View">
+                                    <f:setPropertyActionListener value="#{rol}" target="#{configAppRol.rolAplicacionSelected}" />
+                                </p:commandButton>
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:panel>
+
+                    <p:dialog header="Editar Aplicación" widgetVar="editarTarea" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="editarTarea" style="text-align:center;">
+                            <p:panelGrid  columns="2" rendered="#{not empty configAppRol.rolAplicacionSelected}" >
+                                <h:outputText value="Aplicación:"  />
+                                <p:selectOneMenu  value="#{configAppRol.rolAplicacionSelected.aplicacion.idNuevo}" style="width: 200px">
+                                    <f:selectItems value="#{configAppRol.aplicacionLista}" var="app" itemLabel="#{app.nombre}" itemValue="#{app.id}" />
+                                </p:selectOneMenu>
+                                <h:outputText value="Rol:"  />
+                                <p:selectOneMenu  value="#{configAppRol.rolAplicacionSelected.role.idNuevo}" style="width: 200px">
+                                    <f:selectItems value="#{configAppRol.rolLista}" var="role" itemLabel="#{role.nombre}" itemValue="#{role.id}" />
+                                </p:selectOneMenu>
+
+                            </p:panelGrid>
+                            <p:panelGrid columns="2">
+                                <p:commandButton value="Actualizar" action="#{configAppRol.actualizarRolAplicacion()}" ajax="false"
+                                                 icon="ui-icon ui-icon-disk"
+                                                 async="true" />
+
+                                <p:commandButton value="Cancelar"  ajax="false"
+                                                 icon="ui-icon ui-icon-disk"
+                                                 async="true" />
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
+
+                    <p:dialog header="Nueva Aplicación" widgetVar="nuevaTarea" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="nuevaTarea" style="text-align:center;">
+                            <p:panelGrid  columns="2" rendered="#{not empty configAppRol.nuevoRolAplicacion}" >
+
+                                <h:outputText value="Aplicación:"  />
+                                <p:selectOneMenu  value="#{configAppRol.nuevoRolAplicacion.aplicacion.idNuevo}" style="width: 200px">
+                                    <f:selectItems value="#{configAppRol.aplicacionLista}" var="app" itemLabel="#{app.nombre}" itemValue="#{app.id}" />
+                                </p:selectOneMenu>
+                                <h:outputText value="Rol:"  />
+                                <p:selectOneMenu  value="#{configAppRol.nuevoRolAplicacion.role.idNuevo}" style="width: 200px">
+                                    <f:selectItems value="#{configAppRol.rolLista}" var="role" itemLabel="#{role.nombre}" itemValue="#{role.id}" />
+                                </p:selectOneMenu>
+
+                            </p:panelGrid>
+                            <p:panelGrid columns="2">
+                                <p:commandButton value="Crear" action="#{configAppRol.crearAplicacion()}" ajax="false"
+                                                 icon="ui-icon ui-icon-disk"
+                                                 async="true" />
+
+                                <p:commandButton value="Cancelar"  action="#{configAppRol.cancelar()}" ajax="false"
+                                                 icon="ui-icon ui-icon-disk"
+                                                 async="true" />
+                            </p:panelGrid>
+                        </p:outputPanel>
+                    </p:dialog>
+
+
+                </p:panel>
+            </h:form>
+
+        </ui:define>
+
+
+    </ui:composition>
+
+</h:body>
+
+</html>

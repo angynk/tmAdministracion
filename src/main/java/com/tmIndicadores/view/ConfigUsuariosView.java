@@ -11,6 +11,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.util.List;
 
 @ManagedBean(name = "configUser")
@@ -100,6 +103,22 @@ public class ConfigUsuariosView {
 
 
         }
+    }
+
+    public void verAplicacionesAsociadas(){
+        if(usuarioSelected!=null){
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            try {
+                ec.getFlash().put("usuario",usuarioSelected);
+                ec.redirect(ec.getRequestContextPath()
+                        + "/secured/configAplicacionesRol.xhtml");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     private boolean datosCompletos() {

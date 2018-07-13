@@ -1,12 +1,9 @@
 package com.tmIndicadores.controller.servicios;
 
 
-import com.tmIndicadores.model.dao.RoleDao;
-import com.tmIndicadores.model.dao.TareaDao;
-import com.tmIndicadores.model.dao.UsuarioDao;
-import com.tmIndicadores.model.entity.Role;
-import com.tmIndicadores.model.entity.Tarea;
-import com.tmIndicadores.model.entity.Usuario;
+import com.tmIndicadores.model.dao.*;
+import com.tmIndicadores.model.entity.*;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +22,12 @@ public class ConfiguracionServicio {
 
     @Autowired
     public TareaDao tareaDao;
+
+    @Autowired
+    public AplicacionDao aplicacionDao;
+
+    @Autowired
+    public RolAplicacionDao rolAplicacionDao;
 
     public void addUsuario(Usuario usuario) {
         usuarioDao.addUsuario(usuario);
@@ -97,5 +100,25 @@ public class ConfiguracionServicio {
         Usuario usuario1 = usuarioDao.encontrarUsuarioByNombreUsuario(usuario);
         if(usuario1==null) return true;
         return false;
+    }
+
+    public Aplicacion getAplicacionById(long idNuevo) {
+        return aplicacionDao.obtenerAplicacionIdGenerico(idNuevo);
+    }
+
+    public void updateRoleAplicacion(RolAplicacion rolAplicacionSelected) {
+        rolAplicacionDao.updateRolAplicacion(rolAplicacionSelected);
+    }
+
+    public List<RolAplicacion> getRolAplicacionUsuario(Usuario usuarioSelected) {
+        return rolAplicacionDao.getRolAplicacionUsuario(usuarioSelected);
+    }
+
+    public List<Aplicacion> getAplicacionesAll() {
+        return aplicacionDao.obtenerAplicaciones();
+    }
+
+    public void crearAplicacion(RolAplicacion nuevoRolAplicacion) {
+        rolAplicacionDao.addRolAplicacion(nuevoRolAplicacion);
     }
 }

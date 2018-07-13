@@ -63,6 +63,11 @@
                                 </p:commandButton>
                             </p:column>
                             <p:column style="width:32px;text-align: center" exportable="false" >
+                                <p:commandButton action="#{configUser.verAplicacionesAsociadas()}" icon="ui-icon-note" title="Aplicaciones">
+                                    <f:setPropertyActionListener value="#{user}" target="#{configUser.usuarioSelected}" />
+                                </p:commandButton>
+                            </p:column>
+                            <p:column style="width:32px;text-align: center" exportable="false" >
                                 <p:commandButton update=":form:cambioPass" oncomplete="PF('cambioPass').show()" icon="ui-icon-key" title="Cambio Contraseña">
                                     <f:setPropertyActionListener value="#{user}" target="#{configUser.usuarioSelected}" />
                                 </p:commandButton>

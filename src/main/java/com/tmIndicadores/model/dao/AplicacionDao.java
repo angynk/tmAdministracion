@@ -53,4 +53,10 @@ public class AplicacionDao {
     public void updateAplicacion(Aplicacion aplicacion) {
         getSessionFactory().getCurrentSession().update(aplicacion);
     }
+
+    public Aplicacion obtenerAplicacionIdGenerico(long idNuevo) {
+        Criteria criteria = getSessionFactory().getCurrentSession().createCriteria(Aplicacion.class);
+        criteria.add(Restrictions.eq("id", idNuevo));
+        return (Aplicacion) criteria.uniqueResult();
+    }
 }

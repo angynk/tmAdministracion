@@ -21,6 +21,9 @@ public class Aplicacion {
     @Column(name = "codigo")
     private int codigo;
 
+    @Transient
+    private long idNuevo;
+
     public Aplicacion() {
     }
 
@@ -54,5 +57,13 @@ public class Aplicacion {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public long getIdNuevo() {
+        return idNuevo;
+    }
+
+    public void setIdNuevo(long idNuevo) {
+        this.idNuevo = idNuevo;
     }
 }
