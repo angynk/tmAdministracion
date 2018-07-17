@@ -59,6 +59,7 @@ public class ConfigUsuariosView {
             configuracionServicio.updateUsuario(usuarioSelected);
             messagesView.info(Messages.MENSAJE_EXITOSA,Messages.ACTUALIZACION_USUARIO);
         }
+        usuarioSelected=null;
 
     }
 
@@ -72,6 +73,7 @@ public class ConfigUsuariosView {
         }else{
             messagesView.error(Messages.MENSAJE_FALLIDA,"Digite la nueva contraseña");
         }
+        usuarioSelected =null;
 
     }
 
@@ -130,6 +132,7 @@ public class ConfigUsuariosView {
 
     public void cancelar(){
         usuarioNuevo = new Usuario();
+        usuarioSelected = null;
     }
 
     public List<Usuario> getUsuariosRecords() {

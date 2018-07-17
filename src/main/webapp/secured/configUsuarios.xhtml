@@ -57,17 +57,17 @@
                                 <h:outputText value="#{user.email}"  style="width: 75px"/>
                             </p:column>
 
-                            <p:column style="width:32px;text-align: center" exportable="false" >
+                            <p:column style="width:32px;text-align: center" exportable="false" headerText="Editar" >
                                 <p:commandButton update=":form:editarUsuario" oncomplete="PF('editarUsuario').show()" icon="ui-icon-pencil" title="Editar">
                                     <f:setPropertyActionListener value="#{user}" target="#{configUser.usuarioSelected}" />
                                 </p:commandButton>
                             </p:column>
-                            <p:column style="width:32px;text-align: center" exportable="false" >
+                            <p:column style="width:32px;text-align: center" exportable="false" headerText="Apps">
                                 <p:commandButton action="#{configUser.verAplicacionesAsociadas()}" icon="ui-icon-note" title="Aplicaciones">
                                     <f:setPropertyActionListener value="#{user}" target="#{configUser.usuarioSelected}" />
                                 </p:commandButton>
                             </p:column>
-                            <p:column style="width:32px;text-align: center" exportable="false" >
+                            <p:column style="width:32px;text-align: center" exportable="false" headerText="Clave">
                                 <p:commandButton update=":form:cambioPass" oncomplete="PF('cambioPass').show()" icon="ui-icon-key" title="Cambio Contraseña">
                                     <f:setPropertyActionListener value="#{user}" target="#{configUser.usuarioSelected}" />
                                 </p:commandButton>
@@ -103,7 +103,7 @@
                                                  icon="ui-icon ui-icon-disk"
                                                  async="true" />
 
-                                <p:commandButton value="Cancelar"  ajax="false"
+                                <p:commandButton value="Cancelar"  ajax="false" action="#{configUser.cancelar()}"
                                                  icon="ui-icon ui-icon-disk"
                                                  async="true" />
                             </p:panelGrid>
